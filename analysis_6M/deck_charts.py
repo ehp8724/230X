@@ -154,3 +154,94 @@ ax[0].text(196.15, ax[0].get_ylim()[1]*0.999, "chop / calm: market making", font
 ax[0].text(fb+0.1, 100.12, f"first trend buy (tick {fb:.1f}): gap held above 12 ticks for 0.8 s", fontsize=13, color=INK, va="bottom")
 ax[0].set_xlim(196, 207)
 save(fig, "G_regime.png")
+
+# ======================= 10-slide deck: narrower / new charts =======================
+plt.rcParams.update({"font.size": 14})
+
+# A2. stacked price paths ---------------------------------------------------
+fig, ax = plt.subplots(3, 1, figsize=(8.6, 5.9), sharex=True)
+for a, tk, c, ttl in zip(ax, ["CNR", "RY", "AC"], [BLUE, ORANGE, GREEN], ["CNR (anchor ~\\$160): P&L -\\$53k, same with or without the spike", "RY (log axis): P&L +\\$6.22M with spike, about +\\$0.45M without", "AC (anchor ~\\$25): P&L +\\$117k, same with or without the spike"]):
+    x, y, _ = path(tk); pre = y[x < 200]
+    a.axhspan(pre.mean()-2*pre.std(), pre.mean()+2*pre.std(), color=c, alpha=.16, lw=0)
+    a.plot(x, y, color=c, lw=1.8); a.axvline(200, color=MUTED, ls="--", lw=1); a.set_xlim(0, 300)
+    a.set_title(ttl, loc="left", fontsize=14, fontweight="bold", color=INK, pad=3)
+    if tk == "RY": a.set_yscale("log"); a.yaxis.set_minor_formatter(mt.NullFormatter()); a.set_yticks([100, 200, 400]); a.yaxis.set_major_formatter(mt.FuncFormatter(lambda v, _: f"\\${v:g}"))
+    else: a.yaxis.set_major_formatter(mt.FormatStrFormatter("\\$%.2f" if tk == "CNR" else "\\$%.0f"))
+ax[0].set_ylim(159.0, 161.0); ax[2].set_ylim(24.5, 32); ax[2].set_xlabel("case tick  (dashed line = tick 200; shaded band = normal range, ticks 0-199)")
+save(fig, "A2_price_paths_stacked.png")
+
+# G2. regime detection, narrow ---------------------------------------------
+fig, ax = plt.subplots(3, 1, figsize=(9.2, 6.4), sharex=True, gridspec_kw={"height_ratios": [1.2, 1, 1]})
+x, y, _ = path("RY"); m = (x >= 196) & (x <= 207)
+ax[0].plot(x[m], y[m], color=ORANGE, lw=2.2); ax[0].set_ylabel("RY price"); ax[0].yaxis.set_major_formatter(mt.FormatStrFormatter("\\$%.1f"))
+ax[1].plot(w.x, w.RY_gap, color=BLUE, lw=2.2); ax[1].axhline(12, color=RED, ls="--", lw=1.6); ax[1].set_ylabel("EMA gap (ticks)")
+ax[1].text(196.1, 16, "entry threshold 12", color=RED, fontsize=12)
+ax[2].plot(w.x, w.RY_er, color=GREEN, lw=2.2); ax[2].axhline(0.45, color=RED, ls="--", lw=1.6); ax[2].set_ylabel("efficiency ratio"); ax[2].set_ylim(-.05, 1.15)
+ax[2].text(196.1, 0.52, "TREND needs 0.45", color=RED, fontsize=12); ax[2].set_xlabel("case tick")
+reg = w.RY_regime.values; xs = w.x.values; i = 0
+while i < len(reg):
+    j = i
+    while j+1 < len(reg) and reg[j+1] == reg[i]: j += 1
+    for a in ax: a.axvspan(xs[i], xs[min(j+1, len(xs)-1)], color=col.get(reg[i], BG), alpha=.28, lw=0)
+    i = j+1
+for a in ax: a.axvline(fb, color=GREEN, lw=1.8, ls=":")
+ax[0].text(196.15, ax[0].get_ylim()[1]*0.999, "chop / calm: market making", fontsize=12, color=INK, va="top")
+ax[0].text(fb+0.12, 100.05, "first trend buy\n(tick 201.6)", fontsize=12, color=INK, va="bottom")
+ax[0].set_xlim(196, 207)
+save(fig, "G2_regime_narrow.png")
+
+# F2. limits, narrow -----------------------------------------------------------
+fig, ax = plt.subplots(figsize=(10, 5.6))
+ax.plot(d.x, d.gross, color=BLUE, lw=1.3, label="gross position"); ax.plot(d.x, d.net.abs(), color=ORANGE, lw=1.3, label="|net| position")
+ax.axhline(25000, color=RED, lw=2.2); ax.axhline(23250, color=AMBER, lw=2, ls="--")
+ax.text(3, 25350, "case limit 25,000", color=RED, fontsize=13); ax.text(3, 23550, "bot's own cap 23,250 (93%)", color="#9a6b00", fontsize=13)
+ax.set_ylim(0, 27800); ax.set_xlim(0, 300); ax.set_xlabel("case tick"); ax.set_ylabel("shares"); ax.legend(loc="center left", frameon=False, fontsize=13)
+ax.yaxis.set_major_formatter(mt.FuncFormatter(lambda v, _: f"{v/1000:.0f}k"))
+save(fig, "F2_limits_narrow.png")
+
+# H3. total P&L of the three algos ----------------------------------------------
+RUNS3 = [("algo2e_fin.py\n(market making + trend)", TK, BLUE),
+         ("dir.py\n(trend only)", "analysis_6M/raw/dir_v3_ticks_20261002_192712_port17000_pid129560.csv", GREEN),
+         ("Market making only\n(trend engine off)", "logs/v3_ticks_20261002_193049_port18000_pid321352.csv", ORANGE)]
+fig, ax = plt.subplots(1, 3, figsize=(16, 4.9))
+for a, (ttl, f, c) in zip(ax, RUNS3):
+    r = pd.read_csv(f); gg = r.groupby("case_tick").t
+    r["x"] = r.case_tick + (r.t - gg.transform("min")) / (gg.transform("max") - gg.transform("min") + 1e-9) * .999
+    a.plot(r.x, r.nlv, color=c, lw=2.3); a.axhline(0, color=MUTED, lw=.8); a.axvline(217, color=MUTED, ls="--", lw=1.2); a.set_xlim(0, 300)
+    a.yaxis.set_major_formatter(mt.FuncFormatter(money)); a.set_title(ttl, loc="left", fontsize=15, fontweight="bold", color=INK); a.set_xlabel("case tick")
+    fin = r.nlv.iloc[-1]
+    lab = "final " + (money(fin) if abs(fin) >= 1e6 else ("-" if fin < 0 else "+") + "$" + format(abs(fin), ",.0f"))
+    yl = a.get_ylim()
+    a.text(224 if fin > 1e5 else 298, (yl[0] + (yl[1]-yl[0])*.28) if fin > 1e5 else fin + (yl[1]-yl[0])*.14, lab, ha="left" if fin > 1e5 else "right", fontsize=16, fontweight="bold", color=INK)
+    a.text(214, a.get_ylim()[0] + (a.get_ylim()[1]-a.get_ylim()[0])*.5, "RY spike\ntick 217", ha="right", fontsize=12, color=MUTED)
+save(fig, "H3_total_pnl_three_algos.png")
+
+# H. inventory brake ---------------------------------------------------------------
+r_ = np.linspace(0, 1, 200)
+fig, ax = plt.subplots(2, 1, figsize=(8, 4.6), sharex=True)
+ax[0].plot(r_, np.exp(-3*r_), color=BLUE, lw=2.4); ax[0].set_ylabel("adding-side size ×"); ax[0].axvline(.85, color=RED, ls="--", lw=1.4)
+ax[0].text(.83, .55, "adding side\noff at r = 0.85\n(7,650 shares)", ha="right", fontsize=12, color=RED)
+ax[1].plot(r_, 4*r_**1.5, color=ORANGE, lw=2.4); ax[1].set_ylabel("quote fade (ticks)"); ax[1].axvline(.85, color=RED, ls="--", lw=1.4)
+ax[1].set_xlabel("inventory ratio r = |position| ÷ 9,000"); ax[1].set_xlim(0, 1)
+save(fig, "H_inventory_brake.png")
+
+# I. AC ride ---------------------------------------------------------------------------
+fig, ax = plt.subplots(2, 1, figsize=(8, 4.6), sharex=True, gridspec_kw={"height_ratios": [2, 1]})
+x, y, _ = path("AC"); mk = x >= 255
+ax[0].plot(x[mk], y[mk], color=GREEN, lw=2.2); shade(ax[0], "AC"); trades(ax[0], "AC"); ax[0].set_xlim(255, 300)
+ax[0].yaxis.set_major_formatter(mt.FormatStrFormatter("\\$%.0f")); ax[0].set_ylabel("AC price"); ax[0].legend(loc="upper left", frameon=False, fontsize=12)
+ax[1].step(d.x, d.AC_pos, where="post", color=INK, lw=1.5); ax[1].fill_between(d.x, 0, d.AC_pos, step="post", color=BLUE, alpha=.18); shade(ax[1], "AC")
+ax[1].set_ylabel("AC position"); ax[1].set_xlabel("case tick"); ax[1].yaxis.set_major_formatter(mt.FuncFormatter(lambda v, _: f"{v/1000:.0f}k"))
+save(fig, "I_AC_ride.png")
+
+# E2. where the money came from, narrow ---------------------------------------------
+parts2 = [("RY: exit into spike", 5777656, ORANGE), ("RY: trend ride", 450870, BLUE), ("AC: trend ride", 111511, GREEN), ("AC: market making", 5079, GREEN),
+          ("RY: market making", -3698, ORANGE), ("CNR: market making", -16152, BLUE), ("CNR: early trend calls", -36494, BLUE)]
+fig, ax = plt.subplots(figsize=(9.6, 5.4))
+nm = [p_[0] for p_ in parts2][::-1]; vl = [p_[1] for p_ in parts2][::-1]; cl = [p_[2] for p_ in parts2][::-1]
+ax.barh(nm, vl, color=cl, height=.62); ax.set_xscale("symlog", linthresh=10000, linscale=.6)
+ax.set_xticks([-100000, 0, 100000, 1000000, 6000000]); ax.xaxis.set_major_formatter(mt.FuncFormatter(money))
+for i, v in enumerate(vl): ax.text(v, i, f"  {'-' if v < 0 else '+'}\\${abs(v):,.0f}  ", va="center", ha="left" if v >= 0 else "right", fontsize=13, color=INK)
+ax.axvline(0, color=MUTED, lw=1); ax.set_xlim(-4e5, 4e7); ax.grid(axis="y", visible=False); ax.set_xlabel("P&L (symmetric-log axis)")
+save(fig, "E2_breakdown_narrow.png")
+print("deck2 charts ok")
