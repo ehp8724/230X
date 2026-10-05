@@ -245,3 +245,21 @@ for i, v in enumerate(vl): ax.text(v, i, f"  {'-' if v < 0 else '+'}\\${abs(v):,
 ax.axvline(0, color=MUTED, lw=1); ax.set_xlim(-4e5, 4e7); ax.grid(axis="y", visible=False); ax.set_xlabel("P&L (symmetric-log axis)")
 save(fig, "E2_breakdown_narrow.png")
 print("deck2 charts ok")
+
+# ======================= per-security charts (price + trades + P&L) =======================
+plt.rcParams.update({"font.size": 13})
+def sec_chart(tk, color, fn, ylim=None, log=False, cf=False):
+    fig, ax = plt.subplots(2, 1, figsize=(5.0, 4.9), sharex=True, gridspec_kw={"height_ratios": [2.3, 1.2]})
+    x, y, _ = path(tk); a = ax[0]; a.plot(x, y, color=color, lw=2); shade(a, tk); trades(a, tk); a.set_xlim(0, 300)
+    if log: a.set_yscale("log"); a.yaxis.set_minor_formatter(mt.NullFormatter()); a.set_yticks([100, 200, 400]); a.yaxis.set_major_formatter(mt.FuncFormatter(lambda v, _: f"\\${v:g}"))
+    else: a.yaxis.set_major_formatter(mt.FormatStrFormatter("\\$%.2f" if tk == "CNR" else "\\$%.0f"))
+    if ylim: a.set_ylim(*ylim)
+    a.set_ylabel("price"); b = ax[1]
+    b.plot(d.x, d[tk+"_pnl"], color=INK, lw=2, label="actual"); shade(b, tk); b.axhline(0, color=MUTED, lw=.8)
+    if cf: b.plot(p.case_tick + .5, p.RY_pnl_cf, color=BLUE, lw=2, ls="--", label="without spike"); b.legend(loc="upper left", frameon=False, fontsize=12)
+    b.set_ylabel("P&L"); b.set_xlabel("case tick"); b.yaxis.set_major_formatter(mt.FuncFormatter(money))
+    save(fig, fn)
+sec_chart("CNR", BLUE, "J_CNR.png", ylim=(159.1, 160.8))
+sec_chart("RY", ORANGE, "J_RY.png", log=True, cf=True)
+sec_chart("AC", GREEN, "J_AC.png", ylim=(24.8, 32))
+print("sec charts ok")
