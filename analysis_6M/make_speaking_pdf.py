@@ -111,7 +111,7 @@ slides = [
   "<b>CNR.</b> It stayed between about $159.1 and $160.8 all case, so it was mean-reverting. It lost $53,000. Three trend calls in the first 13 ticks reversed immediately, minus $37,000, "
   "and market-making stop-outs added minus $16,000. The circuit breaker fired at tick 38. Same with or without the spike.",
   "<b>RY.</b> Flat at $100 for 200 ticks. At tick 200 it started to drift up. Our engine bought 22,062 shares between $100.2 and $105.5 starting at tick 201 and held them as the price reached "
-  "$118. At tick 217 the book became one-sided because of Group 12's activity: bids jumped to $346 and then $402. We sold the whole position in about two seconds. That trade made "
+  "$118. At tick 217 the book became one-sided because of Group 12's activity: bids jumped to $346 and then $402. We sold the whole position in five orders over about four seconds. That trade made "
   "<b>$6.22 million</b>. If you value the exit at the last normal bid, $121, the same trade is about $0.45 million.",
   "<b>AC.</b> Flat near $25 until tick 264, then a steady climb to $31.5. We entered at tick 265, held about 22,000 shares and closed in the end-of-case unwind. Plus $117,000, same either way."]),
  ("Slide 8: Total P&amp;L of the three algorithms", "1 min", [
@@ -169,7 +169,7 @@ QA = [
   "- <b>Ticks 0 to 199:</b> quiet and mean-reverting on all three stocks. Market making earned nothing; P&amp;L sat near -$52k.",
   "- <b>Tick 200 to 201:</b> RY started drifting up. The efficiency ratio went from 0 to 1.0, the regime became TREND, and at tick 201.6 the bot started buying RY.",
   "- <b>Ticks 201 to 216:</b> it held 22,062 RY shares as price went from $100 to $118 (open profit about $0.37M).",
-  "- <b>Tick 217:</b> RY's book turned one-sided (Group 12's activity): bids at $346, then $402, no asks. The bot sold all 22,062 shares in about 2 s: about +$5.8M. A second RY jump at tick 261 added only about +$6k.",
+  "- <b>Tick 217:</b> RY's book turned one-sided (Group 12's activity): bids at $346, then $402, no asks. The bot sold all 22,062 shares in five orders over about 4 s: about +$5.8M. A second RY jump at tick 261 added only about +$6k.",
   "- <b>Tick 265:</b> AC began a steady climb from $25.1; the bot bought, held about 22k shares, and closed in the end-of-case unwind at tick 296: +$117k.",
   "<b>Final:</b> $6,288,771 (RY +$6.22M, AC +$117k, CNR -$53k)."]),
  ("4. What was the sizing strategy?", [
