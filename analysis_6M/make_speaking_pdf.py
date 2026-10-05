@@ -24,7 +24,7 @@ NOTE = ParagraphStyle("NOTE", fontName="DV", fontSize=9.5, leading=13.5, textCol
                       borderPadding=(6, 8, 6, 8), spaceBefore=12, spaceAfter=10)
 CELL = ParagraphStyle("CELL", fontName="DV", fontSize=9.5, leading=13, textColor=INK)
 CELLB = ParagraphStyle("CELLB", parent=CELL, fontName="DV-B")
-BUL = ParagraphStyle("BUL", parent=BODY, leftIndent=14, bulletIndent=2, spaceAfter=3)
+BUL = ParagraphStyle("BUL", parent=BODY, leftIndent=14, bulletIndent=2, spaceAfter=3, bulletFontName="DV")
 
 def P(t, s=BODY): return Paragraph(t, s)
 
@@ -142,6 +142,91 @@ for title, tm, paras in slides:
     block = [P(title, H2), P(f"Time: {tm}", TIME)] + [P(x) for x in paras[:1]]
     story.append(KeepTogether(block))
     story += [P(x) for x in paras[1:]]
+
+# ----------------------------------------------------------------------------- Q&A
+QA = [
+ ("1. What was the strategy as a whole, and where did we expect to make money?", [
+  "The bot has three parts working together: a <b>market maker</b> for quiet markets, a <b>trend engine</b> for breakouts, and a <b>risk layer</b> over both. A regime detector (efficiency ratio, "
+  "EMA gap, Bollinger z-score) decides which part is in charge for each stock.",
+  "<b>Expected money, in order of how much we planned on it:</b>",
+  "- <b>Market making (the base income).</b> We expected prices to bounce around an anchor (mean reversion, a guess, since nobody told us the path). A market maker buys at the bid and sells at the ask "
+  "and keeps the spread plus the maker rebate. With a 1-tick spread ($0.01) that is about $10 per 1,000 shares round trip, plus a few dollars of rebate, so it only works with large size and many trades.",
+  "- <b>Trend engine (the insurance).</b> If a price moved hard one way, a market maker loses, so the trend engine switches to riding the move instead.",
+  "- <b>Sweep-catcher ladder (small extra).</b> Far-from-fair limit orders that fill if a thin book gets run over.",
+  "<b>What actually paid:</b> the opposite order. Market making lost about $15k. The trend engine made about $6.3M, almost all of it from one RY event."]),
+ ("2. What changes did we make to handle multiple securities and fees/rebates?", [
+  "<b>Multiple securities.</b>",
+  "- Each stock has its own state: signals, regime, mode (market making, trend or cut), stops and learned entry bar. Tick size and fees are read per stock from the server.",
+  "- The three stocks share one set of limits. Every order is checked against worst-case exposure across all three together.",
+  "- The trend engine's size is the share of the cap left after the other stocks' positions (95% of the cap minus the others' positions).",
+  "- When limit room is tight, aggressive orders go first, then the quotes of the stock with the healthiest wide spread, then the other quotes, then the ladder.",
+  "<b>Fees and rebates.</b> CNR and AC pay a rebate for resting orders (about $0.0023 and $0.0011 per share); RY is inverted: resting costs about $0.0020 per share and taking earns $0.0014. "
+  "The bot reads each stock's fees from the server, but, to be accurate, its quoting decisions do not change with them. Our response was to quote the largest size (5,000) in calm markets to "
+  "harvest spread and rebates. The weakness: it also quoted RY, where resting costs money. Next time we would not quote RY."]),
+ ("3. What happened during the simulation?", [
+  "- <b>Ticks 0 to 13:</b> three trend calls on CNR reversed straight away, about -$37k.",
+  "- <b>Tick 38:</b> the circuit breaker fired once after those CNR losses (P&amp;L about -$40k from its peak), flattened, and paused for 8 s.",
+  "- <b>Ticks 0 to 199:</b> quiet and mean-reverting on all three stocks. Market making earned nothing; P&amp;L sat near -$52k.",
+  "- <b>Tick 200 to 201:</b> RY started drifting up. The efficiency ratio went from 0 to 1.0, the regime became TREND, and at tick 201.6 the bot started buying RY.",
+  "- <b>Ticks 201 to 216:</b> it held 22,062 RY shares as price went from $100 to $118 (open profit about $0.37M).",
+  "- <b>Tick 217:</b> RY's book turned one-sided (Group 12's activity): bids at $346, then $402, no asks. The bot sold all 22,062 shares in about 2 s: about +$5.8M. A second RY jump at tick 261 added only about +$6k.",
+  "- <b>Tick 265:</b> AC began a steady climb from $25.1; the bot bought, held about 22k shares, and closed in the end-of-case unwind at tick 296: +$117k.",
+  "<b>Final:</b> $6,288,771 (RY +$6.22M, AC +$117k, CNR -$53k)."]),
+ ("4. What was the sizing strategy?", [
+  "<b>Rule: be big when the evidence is strong or the risk is small, small when the market is stressed.</b>",
+  "- <b>Market making:</b> 5,000 shares per side when calm or in a healthy wide spread, 3,000 in normal conditions, half of that when stressed, 2,000 in thin books. Per-stock inventory cap 9,000 shares.",
+  "- <b>Inventory brake:</b> with r = position / 9,000, the size on the side that adds inventory is multiplied by e^(-3r), and that side is switched off at r of 0.85 (7,650 shares). "
+  "The reducing side gets larger, up to size x (1 + r), capped at 5,000.",
+  "- <b>Trend engine:</b> first order 60% of the cap, growing with signal strength up to about 95% of the cap (about 22k shares), shared across stocks, in chunks of at most 5,000 shares.",
+  "- <b>Sweep ladder:</b> 1,500, 1,500 and 2,000 shares at 3%, 8% and 15% from fair value.",
+  "- <b>Session governor:</b> quote size is halved if total P&amp;L is below -$25k, and quartered below -$50k."]),
+ ("5. Why did market making not make money?", [
+  "- <b>The spread was one tick.</b> In the first 200 ticks the median spread was 1 tick ($0.01) on all three stocks. That is about $0.01 per share of gross income per trade.",
+  "- <b>The losses are bigger than the gains.</b> The stop-loss on inventory is the larger of 5 ticks or 3x volatility. Rough break-even arithmetic: winning 1 tick and losing 5 ticks needs "
+  "about 5 wins out of every 6 trades just to break even. Prices moved in jumps larger than a cent, so stops fired often: 86 times on CNR. Each stop crosses the spread and gives it back.",
+  "- <b>Adverse selection.</b> The orders that fill are disproportionately the ones before a price move, so the market maker tends to be on the wrong side.",
+  "- <b>RY fees.</b> Resting orders on RY cost money, which is consistent with its small loss (-$3.7k). We have not proven that was the cause.",
+  "<b>Evidence:</b> market making in the main run lost about $15k (CNR -$16.2k, RY -$3.7k, AC +$5.1k). The market-making-only build, in the same market, finished at -$28.4k (CNR -$28.7k, RY -$6.1k, AC +$6.4k)."]),
+ ("6. How would the mean-reversion strategy have acted in this market?", [
+  "<b>What it is.</b> A target inventory based on the Bollinger z-score: target = -MAX x clip(z / 2, -1, 1), where MAX is 8,000 or 12,000 shares. If price is low in its band (negative z), the target is long; "
+  "if high, short. The quotes are skewed toward that target instead of toward zero.",
+  "<b>When it runs.</b> Only outside TREND, when the slow t-stat is small and the volatility state is not stressed, after a 10 s warm-up, and only while the stock is in market-making mode.",
+  "<b>In this market.</b> Prices bounced inside narrow bands for 200 ticks (CNR standard deviation about $0.29, RY about $0.08, AC about $0.04), so the tilt would have been active about 45% of the time on CNR, "
+  "54% on RY and 44% on AC. At tick 200 RY became TREND, so the tilt would have switched off at once and not held a short into the drift or the spike. In the replay, almost all of its gain comes from ticks 0 to 199."]),
+ ("7. Do we expect it to affect P&amp;L, and by how much?", [
+  "<b>Estimate (a replay of the logged signals, not a rerun of the bot):</b>",
+  "- At 8,000 shares: about <b>+$37k</b> gross (CNR +$23k, RY +$12k, AC +$2k). At 12,000 shares: about <b>+$56k</b> gross.",
+  "- After trading costs (half to a full tick on about 3M shares traded at 8,000): about <b>+$5k to +$20k</b>.",
+  "- That is <b>under 1% of $6.29M</b>. Against the about $511k without the spike, roughly 7% to 11% gross and 1% to 4% after costs.",
+  "<b>Caveats:</b> it is an upper bound because it assumes the position is at target instantly (the real bot reaches it slowly through quotes), it ignores interaction with the stops, and our earlier tests said the tilt "
+  "lost to plain market making. So we expect a small effect and no change to the story. It was off in the run."]),
+ ("8. What was the directional (trend) strategy, and how did it work?", [
+  "<b>Idea:</b> when a price moves steadily in one direction, take a large position in that direction and hold it with a trailing stop (trend following / momentum).",
+  "<b>Entry (all must hold):</b> EMA gap (fast 1 s minus slow 8 s) above max(12 ticks, 5x volatility); efficiency ratio at least 0.45 in the same direction; spread at most 6 ticks; signal held 0.8 s; "
+  "room under the cap (at least 2,000 shares); not in cooldown or lockout.",
+  "<b>Size and orders:</b> 60% of the cap first, growing to about 95%; capped limit orders (3 ticks through the touch), chunks of up to 5,000.",
+  "<b>Exit (any):</b> trailing stop of max(15 ticks, 6x volatility) from the best price; gap falls below 25% of the entry threshold; no new high or low for about 8 s; end-of-case unwind.",
+  "<b>Learning:</b> a losing ride raises that stock's entry bar by 1.4x (up to 3x); a winning ride lowers it by 0.8x; three losers in a row switch it off for that stock for 60 s.",
+  "<b>How it worked:</b> RY: entry at tick 201, +$451k on the ride before the spike, then +$5.78M selling into the spike. AC: +$112k on the climb. CNR: three early false calls, -$36k, after which the bar rose and it did not fire on CNR again."]),
+ ("9. How did we plan sizing, limits and unwinding?", [
+  "<b>Limits.</b> The case limit is 25,000 shares gross and net.",
+  "- <b>Planning cap 93%</b> (23,250). Before every order: assume all resting orders, in-flight orders and this order fill at once, for all three stocks together. If it does not fit, shrink by 40% at a time down to 100 shares, then drop it.",
+  "- <b>Safety net 96%</b> (24,000): if actual gross or net passes it, stop adding and cut the biggest position at once.",
+  "- <b>Circuit breaker:</b> P&amp;L down $40,000 from its peak means flatten and pause for 8 s. It fired once, at tick 38.",
+  "- <b>Orders:</b> limit orders only, within 2% (at least 10 ticks) of fair value; refuse if the touch is further out; leftovers cancelled after 0.6 s.",
+  "<b>Unwinding.</b> About 20 s before the end, stop adding risk; about 8 s before the end, cross the spread to finish flat (both scaled to the case length). After a trend exit the position is sold down in 'cut' mode. "
+  "Ctrl-C cancels all orders and flattens.",
+  "<b>Result:</b> peak gross 23,088 and peak net 22,837 against 25,000, no samples above 24,000, and the AC position was closed at tick 296."]),
+]
+story += [P("Questions answered in basic, technical terms", H2),
+          P("Each answer below is self-contained, so you can rehearse it separately from the slide script.", TIME)]
+for q, parts in QA:
+    block = [P(q, ParagraphStyle("QH", parent=BODY, fontName="DV-B", textColor=ACC, spaceBefore=8, spaceAfter=3))]
+    first = parts[0]
+    block.append(Paragraph(first[2:], BUL, bulletText="\u2022") if first.startswith("- ") else P(first))
+    story.append(KeepTogether(block))
+    for x in parts[1:]:
+        story.append(Paragraph(x[2:], BUL, bulletText="•") if x.startswith("- ") else P(x))
 
 story += [P("Do not say", H2),
           P("&bull; \"The mean-reversion flag was on.\" It was off.", BUL),
