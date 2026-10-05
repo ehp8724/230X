@@ -1,0 +1,2 @@
+t,case_tick,event,ticker,side,qty,price,pos,note
+45.218,0,end,,,,,,"pnl 0.00 pos {'CNR': 0, 'RY': 0, 'AC': 0}"

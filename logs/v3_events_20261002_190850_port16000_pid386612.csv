@@ -1,0 +1,312 @@
+t,case_tick,event,ticker,side,qty,price,pos,note
+32.770,6,regime,RY,,,,,"chop -> mixed (er=0.27, net +17t over 7s)"
+33.071,6,regime,RY,,,,,"mixed -> chop (er=0.25, net +17t over 7s)"
+33.563,7,regime,RY,,,,,"chop -> mixed (er=0.29, net +20t over 7s)"
+33.563,7,regime,AC,,,,,"mixed -> chop (er=0.00, net +0t over 7s)"
+34.129,7,regime,AC,,,,,"chop -> mixed (er=0.50, net +2t over 7s)"
+35.323,9,regime,RY,,,,,"mixed -> TREND (er=0.45, net +31t over 7s)"
+36.693,10,regime,AC,,,,,"mixed -> TREND (er=1.00, net +9t over 7s)"
+38.255,12,regime,CNR,,,,,"TREND -> mixed (er=0.53, net -5t over 7s)"
+38.255,12,regime,RY,,,,,"TREND -> chop (er=0.01, net -0t over 7s)"
+38.656,12,dir_enter,AC,LONG,17669,26.2850,0,gap=12.4t thr=8.0t er=1.00 vol=1.8
+38.658,12,place,AC,BUY,5000,26.3300,0,agg
+39.204,12,fill,AC,BUY,5000,26.2850,5000,mode=dir
+39.204,12,regime,CNR,,,,,"mixed -> chop (er=0.20, net -2t over 7s)"
+39.542,13,regime,RY,,,,,"chop -> mixed (er=0.27, net -12t over 7s)"
+39.691,13,place,AC,BUY,5000,26.3800,5000,agg
+39.820,13,regime,RY,,,,,"mixed -> chop (er=0.16, net -8t over 7s)"
+40.226,13,fill,AC,BUY,5000,26.3350,10000,mode=dir
+40.719,14,place,AC,BUY,2087,26.4000,10000,agg
+41.171,14,regime,CNR,,,,,"chop -> mixed (er=0.27, net +1t over 7s)"
+41.278,14,fill,AC,BUY,2087,26.3550,12087,mode=dir
+41.303,14,place,AC,BUY,826,26.4100,12087,agg
+41.674,15,fill,AC,BUY,826,26.3650,12913,mode=dir
+41.724,15,place,AC,BUY,435,26.4100,12913,agg
+42.457,15,fill,AC,BUY,435,26.3650,13348,mode=dir
+42.460,15,regime,CNR,,,,,"mixed -> TREND (er=1.00, net +10t over 7s)"
+42.751,16,place,AC,BUY,5000,26.4100,13348,agg
+43.281,16,regime,RY,,,,,"chop -> mixed (er=0.26, net +21t over 7s)"
+43.383,16,fill,AC,BUY,5000,26.3650,18348,mode=dir
+44.253,17,regime,RY,,,,,"mixed -> TREND (er=0.42, net +33t over 7s)"
+45.158,19,dir_exit,AC,,18348,26.1650,18348,fast trail 20>15t
+45.158,19,regime,AC,,,,,losing ride -12t -> entry bar x1.40
+45.162,19,place,AC,SELL,5000,26.0000,18348,agg
+45.406,19,dir_enter,RY,LONG,2991,101.5350,0,gap=21.0t thr=18.2t er=0.66 vol=4.6
+45.565,19,fill,AC,SELL,4900,26.0850,13448,mode=cut
+45.586,19,place,RY,BUY,5000,101.5800,0,agg
+45.672,19,dir_enter,CNR,LONG,6911,159.1050,0,gap=12.8t thr=8.0t er=1.00 vol=1.8
+45.673,19,place,CNR,BUY,3000,159.1500,0,agg
+45.928,19,fill,RY,BUY,5000,101.5500,5000,mode=dir
+46.864,19,fill,CNR,BUY,3000,159.1100,3000,mode=dir
+46.934,20,place,AC,SELL,5000,25.8300,13448,agg
+47.503,21,fill,AC,SELL,5000,25.8850,8448,mode=cut
+48.161,21,place,AC,SELL,5000,25.8400,8448,agg
+48.688,22,place,CNR,BUY,5000,159.2400,3000,agg
+48.688,22,place,RY,BUY,1800,101.6900,5000,agg
+49.430,22,fill,AC,SELL,5000,25.9100,3448,mode=cut
+49.434,23,regime,AC,,,,,"TREND -> chop (er=0.18, net -15t over 7s)"
+49.441,23,place,RY,BUY,1200,101.6900,5000,agg
+49.441,23,place,AC,SELL,3448,26.1600,3448,agg
+49.760,23,fill,CNR,BUY,5000,159.2100,8000,mode=dir
+49.762,23,fill,RY,BUY,3000,101.6350,8000,mode=dir
+49.765,23,fill,AC,SELL,3448,26.2200,0,mode=cut
+51.343,25,place,CNR,BUY,1800,159.2900,8000,agg
+51.343,25,place,RY,BUY,500,101.6600,8000,agg
+51.595,25,place,CNR,BUY,200,159.2900,8000,agg
+51.595,25,place,RY,BUY,100,101.6600,8000,agg
+51.808,25,fill,CNR,BUY,1800,159.2450,9800,mode=dir
+51.811,25,fill,RY,BUY,500,101.6150,8500,mode=dir
+51.878,25,regime,AC,,,,,"chop -> TREND (er=0.43, net +21t over 7s)"
+52.257,25,fill,CNR,BUY,200,159.2450,10000,mode=dir
+52.258,25,fill,RY,BUY,100,101.6100,8600,mode=dir
+52.523,25,place,CNR,BUY,858,159.3100,10000,agg
+52.523,25,place,RY,BUY,800,101.6600,8600,agg
+52.962,26,fill,CNR,BUY,858,159.2700,10858,mode=dir
+52.973,26,fill,RY,BUY,800,101.6100,9400,mode=dir
+52.976,26,regime,RY,,,,,"TREND -> mixed (er=0.33, net +5t over 7s)"
+53.566,27,regime,AC,,,,,"TREND -> chop (er=0.20, net +12t over 7s)"
+53.602,27,regime,RY,,,,,"mixed -> chop (er=0.12, net -1t over 7s)"
+53.832,27,dir_exit,RY,,9400,101.6250,9400,fast stalled 6s without new extreme
+53.832,27,regime,RY,,,,,winning ride +9t -> entry bar x1.00
+53.835,27,place,RY,SELL,5000,101.5900,9400,agg
+54.134,27,fill,RY,SELL,5000,101.6250,4400,mode=cut
+54.173,27,place,CNR,BUY,1342,159.3200,10858,agg
+54.561,28,regime,RY,,,,,"chop -> mixed (er=0.33, net -3t over 7s)"
+54.757,28,fill,CNR,BUY,1342,159.2750,12200,mode=dir
+54.920,28,place,RY,SELL,4400,101.5700,4400,agg
+55.510,28,fill,RY,SELL,4400,101.6050,0,mode=cut
+56.085,29,regime,CNR,,,,,"TREND -> mixed (er=0.30, net +3t over 7s)"
+56.085,29,regime,AC,,,,,"chop -> TREND (er=0.61, net -19t over 7s)"
+56.354,30,regime,CNR,,,,,"mixed -> chop (er=0.24, net +3t over 7s)"
+56.679,30,regime,RY,,,,,"mixed -> chop (er=0.22, net -2t over 7s)"
+56.679,30,regime,AC,,,,,"TREND -> chop (er=0.20, net -7t over 7s)"
+57.347,31,regime,CNR,,,,,"chop -> mixed (er=0.25, net -2t over 7s)"
+57.347,31,place,CNR,BUY,858,159.2600,12200,agg
+57.920,31,regime,AC,,,,,"chop -> mixed (er=0.33, net +16t over 7s)"
+58.651,31,fill,CNR,BUY,858,159.2050,13058,mode=dir
+59.869,32,regime,AC,,,,,"mixed -> TREND (er=0.44, net +24t over 7s)"
+59.871,32,dir_exit,CNR,,13058,159.2250,13058,fast stalled 6s without new extreme
+59.871,32,regime,CNR,,,,,winning ride +12t -> entry bar x1.00
+59.877,32,place,CNR,SELL,5000,159.1700,13058,agg
+60.963,34,regime,CNR,,,,,"mixed -> chop (er=0.17, net -2t over 7s)"
+60.963,34,regime,RY,,,,,"chop -> mixed (er=0.50, net -2t over 7s)"
+60.964,34,place,CNR,SELL,5000,159.2200,13058,agg
+62.443,34,fill,CNR,SELL,10000,159.2550,3058,mode=cut
+62.445,35,place,CNR,SELL,3058,159.1900,3058,agg
+63.520,35,fill,CNR,SELL,3058,159.2400,0,mode=cut
+63.522,36,regime,AC,,,,,"TREND -> chop (er=0.11, net -6t over 7s)"
+64.533,38,regime,CNR,,,,,"chop -> mixed (er=0.44, net -8t over 7s)"
+64.533,38,regime,AC,,,,,"chop -> TREND (er=0.67, net -28t over 7s)"
+64.815,38,regime,CNR,,,,,"mixed -> TREND (er=0.50, net -10t over 7s)"
+66.591,40,regime,AC,,,,,"TREND -> chop (er=0.21, net -12t over 7s)"
+66.881,40,dir_enter,CNR,SHORT,17669,159.0450,0,gap=-8.9t thr=8.0t er=0.75 vol=1.8
+66.886,40,place,CNR,SELL,5000,159.0000,0,agg
+67.496,40,fill,CNR,SELL,5000,159.0450,-5000,mode=dir
+67.974,41,place,CNR,SELL,5000,158.9900,-5000,agg
+68.405,41,fill,CNR,SELL,5000,159.0350,-10000,mode=dir
+69.557,42,regime,AC,,,,,"chop -> TREND (er=0.86, net +25t over 7s)"
+69.793,43,place,CNR,SELL,2669,159.0200,-10000,agg
+70.453,43,fill,CNR,SELL,2669,159.0550,-12669,mode=dir
+71.342,44,dir_exit,CNR,,-12669,159.2200,-12669,fast trail 19>17t
+71.342,44,regime,CNR,,,,,losing ride -17t -> entry bar x1.40
+71.351,44,place,CNR,BUY,5000,159.3000,-12669,agg
+73.175,46,place,CNR,BUY,5000,159.4000,-12669,agg
+74.201,47,place,CNR,BUY,5000,159.4300,-12669,agg
+74.969,47,fill,CNR,BUY,5000,159.3550,-7669,mode=cut
+75.229,48,fill,CNR,BUY,5000,159.3650,-2669,mode=cut
+75.777,48,place,CNR,BUY,2669,159.4300,-2669,agg
+77.247,50,fill,CNR,BUY,2669,159.4050,0,mode=cut
+78.638,52,regime,CNR,,,,,"TREND -> mixed (er=0.44, net +4t over 7s)"
+82.880,56,regime,CNR,,,,,"mixed -> chop (er=0.07, net +0t over 7s)"
+82.880,56,regime,RY,,,,,"mixed -> chop (er=0.00, net +0t over 7s)"
+83.784,57,regime,RY,,,,,"chop -> mixed (er=1.00, net -1t over 7s)"
+87.197,59,regime,CNR,,,,,"chop -> TREND (er=0.82, net -23t over 7s)"
+88.025,61,dir_enter,AC,LONG,17669,26.7550,0,SLOW trend t=3.7 net=+73t over 21 case ticks
+88.027,61,place,AC,BUY,5000,26.8200,0,agg
+89.006,62,regime,RY,,,,,"mixed -> chop (er=0.00, net +0t over 7s)"
+89.056,62,place,AC,BUY,5000,26.9400,0,agg
+89.477,63,fill,AC,BUY,5000,26.8600,5000,mode=dir
+90.440,63,regime,RY,,,,,"chop -> mixed (er=0.33, net +1t over 7s)"
+90.441,63,place,AC,BUY,5000,26.9900,5000,agg
+90.787,64,regime,RY,,,,,"mixed -> chop (er=0.11, net -0t over 7s)"
+91.102,64,fill,AC,BUY,5000,26.9200,10000,mode=dir
+92.343,65,place,AC,BUY,2669,26.9900,10000,agg
+92.933,65,fill,AC,BUY,2669,26.9350,12669,mode=dir
+92.938,66,regime,RY,,,,,"chop -> mixed (er=0.45, net -2t over 7s)"
+93.845,67,place,AC,BUY,2331,27.0200,12669,agg
+94.122,67,fill,AC,BUY,2331,26.9600,15000,mode=dir
+95.242,68,place,AC,BUY,338,27.0100,15000,agg
+95.571,68,fill,AC,BUY,338,26.9650,15338,mode=dir
+96.696,70,place,AC,BUY,1993,26.9700,15338,agg
+97.071,70,dir_exit,AC,,15338,26.7950,15338,fast trail 17>15t
+97.071,70,regime,AC,,,,,winning ride +4t -> entry bar x1.12
+97.079,70,place,AC,SELL,5000,26.6600,15338,agg
+97.494,70,fill,AC,BUY,1993,26.7950,17331,mode=cut
+97.892,71,regime,CNR,,,,,"TREND -> chop (er=0.13, net +5t over 7s)"
+98.352,71,place,AC,SELL,5000,26.4500,17331,agg
+99.002,72,fill,AC,SELL,5000,26.5600,12331,mode=cut
+99.460,72,regime,CNR,,,,,"chop -> mixed (er=0.29, net -10t over 7s)"
+99.460,72,place,AC,SELL,5000,26.3400,12331,agg
+99.737,73,regime,RY,,,,,"mixed -> chop (er=0.07, net -1t over 7s)"
+100.000,73,fill,AC,SELL,5000,26.4900,7331,mode=cut
+100.002,73,dir_enter,AC,SHORT,17669,26.5000,7331,gap=-19.4t thr=16.5t er=0.83 vol=3.7
+100.465,74,place,AC,SELL,5000,26.3900,7331,agg
+100.646,74,fill,AC,SELL,5000,26.4850,2331,mode=dir
+100.648,74,regime,CNR,,,,,"mixed -> TREND (er=0.44, net -16t over 7s)"
+101.515,75,place,AC,SELL,2331,26.3700,2331,agg
+101.924,75,place,AC,SELL,2331,26.3800,2331,agg
+102.733,75,fill,AC,SELL,4662,26.4550,-2331,mode=dir
+102.755,76,place,AC,SELL,2669,26.3900,-2331,agg
+103.196,76,place,AC,SELL,338,26.3600,-2331,agg
+103.338,76,fill,AC,SELL,2669,26.4350,-5000,mode=dir
+103.555,76,fill,AC,SELL,338,26.4300,-5338,mode=dir
+103.557,76,place,AC,SELL,1655,26.3600,-5338,agg
+103.879,77,place,AC,SELL,1468,26.3500,-5338,agg
+104.139,77,fill,AC,SELL,1655,26.4150,-6993,mode=dir
+104.362,77,fill,AC,SELL,1468,26.4150,-8461,mode=dir
+105.070,78,place,AC,SELL,3532,26.3800,-8461,agg
+105.375,78,fill,AC,SELL,3532,26.4300,-11993,mode=dir
+106.208,79,regime,AC,,,,,"TREND -> chop (er=0.20, net -3t over 7s)"
+106.370,80,place,AC,SELL,1130,26.4300,-11993,agg
+106.535,80,fill,AC,SELL,1130,26.4700,-13123,mode=dir
+107.465,80,regime,AC,,,,,"chop -> TREND (er=0.58, net +15t over 7s)"
+107.467,80,dir_exit,AC,,-13123,26.6200,-13123,fast trail 20>18t
+107.467,80,regime,AC,,,,,losing ride -12t -> entry bar x1.57
+107.487,80,place,AC,BUY,5000,26.7800,-13123,agg
+107.807,81,fill,AC,BUY,1500,26.7450,-11623,mode=cut
+107.808,81,regime,CNR,,,,,"TREND -> mixed (er=0.43, net -4t over 7s)"
+108.164,81,fill,AC,BUY,3500,26.7850,-8123,mode=cut
+108.563,81,place,AC,BUY,5000,27.1000,-8123,agg
+108.922,81,fill,AC,BUY,5000,26.8800,-3123,mode=cut
+108.923,82,regime,CNR,,,,,"mixed -> chop (er=0.20, net +1t over 7s)"
+109.620,83,place,AC,BUY,3123,27.0800,-3123,agg
+109.869,83,fill,AC,BUY,3123,26.9500,0,mode=cut
+109.876,83,regime,CNR,,,,,"chop -> mixed (er=0.43, net -4t over 7s)"
+110.464,83,regime,CNR,,,,,"mixed -> TREND (er=0.67, net -12t over 7s)"
+111.765,85,regime,AC,,,,,"TREND -> chop (er=0.03, net +4t over 7s)"
+113.542,86,dir_enter,CNR,SHORT,17669,158.9150,0,gap=-12.3t thr=11.2t er=0.92 vol=1.4
+113.543,86,place,CNR,SELL,5000,158.8400,0,agg
+114.053,87,fill,CNR,SELL,5000,158.8850,-5000,mode=dir
+114.604,87,regime,AC,,,,,"chop -> mixed (er=0.38, net -32t over 7s)"
+114.605,87,place,CNR,SELL,5000,158.7700,-5000,agg
+115.423,88,fill,CNR,SELL,5000,158.8350,-10000,mode=dir
+115.428,88,regime,AC,,,,,"mixed -> TREND (er=0.47, net -38t over 7s)"
+115.763,89,regime,RY,,,,,"chop -> mixed (er=0.33, net -7t over 7s)"
+116.296,89,regime,RY,,,,,"mixed -> chop (er=0.12, net -2t over 7s)"
+116.541,89,place,CNR,SELL,2694,158.6800,-10000,agg
+116.832,90,fill,CNR,SELL,2694,158.7550,-12694,mode=dir
+117.047,90,regime,RY,,,,,"chop -> mixed (er=0.38, net -5t over 7s)"
+117.495,90,place,CNR,SELL,172,158.6400,-12694,agg
+117.558,90,place,CNR,SELL,2596,158.6100,-12694,agg
+117.792,90,fill,CNR,SELL,2768,158.7000,-15462,mode=dir
+119.779,92,dir_enter,AC,SHORT,5300,26.2650,0,gap=-16.4t thr=14.9t er=1.00 vol=2.4
+119.802,92,place,CNR,SELL,911,158.5700,-15462,agg
+119.802,92,place,AC,SELL,3000,26.2000,0,agg
+120.143,92,fill,CNR,SELL,911,158.6350,-16373,mode=dir
+120.144,92,fill,AC,SELL,3000,26.2650,-3000,mode=dir
+120.147,93,regime,RY,,,,,"mixed -> chop (er=0.14, net -1t over 7s)"
+120.698,94,regime,RY,,,,,"chop -> mixed (er=0.33, net -3t over 7s)"
+120.965,94,regime,RY,,,,,"mixed -> chop (er=0.23, net -2t over 7s)"
+121.229,94,regime,RY,,,,,"chop -> mixed (er=0.29, net -2t over 7s)"
+121.510,94,regime,RY,,,,,"mixed -> chop (er=0.06, net -1t over 7s)"
+121.888,95,regime,RY,,,,,"chop -> mixed (er=0.27, net -3t over 7s)"
+122.524,95,place,CNR,SELL,2768,158.4500,-16373,agg
+122.524,95,place,AC,SELL,700,26.0800,-3000,agg
+122.663,95,place,AC,SELL,300,26.0600,-3000,agg
+122.717,95,regime,RY,,,,,"mixed -> chop (er=0.11, net -1t over 7s)"
+122.722,95,place,AC,SELL,100,26.0600,-3000,agg
+122.979,96,fill,CNR,SELL,2768,158.4950,-19141,mode=dir
+122.980,96,fill,AC,SELL,1100,26.1250,-4100,mode=dir
+127.237,100,regime,RY,,,,,"chop -> mixed (er=0.25, net -3t over 7s)"
+127.623,100,regime,RY,,,,,"mixed -> chop (er=0.18, net -2t over 7s)"
+132.287,105,regime,RY,,,,,"chop -> mixed (er=0.25, net -3t over 7s)"
+132.630,105,regime,RY,,,,,"mixed -> chop (er=0.10, net -1t over 7s)"
+135.364,108,regime,RY,,,,,"chop -> mixed (er=0.41, net -3t over 7s)"
+136.073,109,regime,RY,,,,,"mixed -> chop (er=0.17, net -1t over 7s)"
+139.724,113,regime,RY,,,,,"chop -> mixed (er=0.33, net -2t over 7s)"
+140.570,113,regime,RY,,,,,"mixed -> chop (er=0.17, net -1t over 7s)"
+142.275,115,regime,RY,,,,,"chop -> mixed (er=0.29, net -2t over 7s)"
+142.534,115,regime,RY,,,,,"mixed -> chop (er=0.17, net -1t over 7s)"
+142.823,115,regime,RY,,,,,"chop -> mixed (er=0.29, net -2t over 7s)"
+146.912,120,regime,RY,,,,,"mixed -> chop (er=0.11, net -1t over 7s)"
+147.487,120,regime,RY,,,,,"chop -> mixed (er=0.38, net -3t over 7s)"
+154.775,127,regime,RY,,,,,"mixed -> chop (er=0.09, net -1t over 7s)"
+157.688,130,regime,RY,,,,,"chop -> mixed (er=0.41, net -3t over 7s)"
+162.802,135,regime,RY,,,,,"mixed -> chop (er=0.23, net -3t over 7s)"
+163.064,136,regime,RY,,,,,"chop -> mixed (er=0.36, net -5t over 7s)"
+164.357,137,regime,RY,,,,,"mixed -> chop (er=0.22, net -3t over 7s)"
+164.819,138,regime,RY,,,,,"chop -> mixed (er=0.25, net -3t over 7s)"
+165.087,138,regime,RY,,,,,"mixed -> chop (er=0.18, net -2t over 7s)"
+170.692,143,regime,RY,,,,,"chop -> mixed (er=0.38, net +5t over 7s)"
+171.288,144,regime,RY,,,,,"mixed -> TREND (er=0.54, net +9t over 7s)"
+288.680,261,regime,CNR,,,,,"TREND -> mixed (er=0.33, net -4t over 7s)"
+288.945,261,regime,AC,,,,,"TREND -> mixed (er=0.50, net -4t over 7s)"
+289.195,261,regime,CNR,,,,,"mixed -> chop (er=0.22, net -3t over 7s)"
+290.392,262,dir_exit,CNR,,-19141,152.5250,-19141,fast stalled 6s without new extreme
+290.392,262,regime,CNR,,,,,winning ride +639t -> entry bar x1.12
+290.396,262,place,CNR,BUY,5000,152.5800,-19141,agg
+290.631,262,regime,CNR,,,,,"chop -> mixed (er=0.53, net +4t over 7s)"
+290.631,262,regime,AC,,,,,"mixed -> chop (er=0.00, net +0t over 7s)"
+290.828,263,fill,CNR,BUY,5000,152.5300,-14141,mode=cut
+290.829,263,place,AC,SELL,1200,20.8900,-4100,agg
+291.184,263,fill,AC,SELL,1200,20.9250,-5300,mode=dir
+291.189,263,regime,AC,,,,,"chop -> mixed (er=0.33, net +1t over 7s)"
+291.352,263,dir_enter,RY,LONG,2116,107.0950,0,gap=22.1t thr=8.0t er=1.00 vol=0.7
+291.353,263,place,RY,BUY,2116,107.1700,0,agg
+291.471,263,fill,RY,BUY,2116,107.0950,2116,mode=dir
+291.480,263,place,CNR,BUY,5000,152.5800,-14141,agg
+291.917,263,fill,CNR,BUY,5000,152.5350,-9141,mode=cut
+291.920,263,place,RY,BUY,1298,107.2000,2116,agg
+292.149,264,fill,RY,BUY,1298,107.1250,3414,mode=dir
+292.523,264,regime,CNR,,,,,"mixed -> TREND (er=1.00, net +9t over 7s)"
+292.535,264,dir_exit,AC,,-5300,20.9250,-5300,fast stalled 6s without new extreme
+292.535,264,regime,AC,,,,,winning ride +534t -> entry bar x1.25
+292.538,264,place,CNR,BUY,5000,152.6100,-9141,agg
+292.538,264,place,AC,BUY,5000,20.9700,-5300,agg
+292.908,265,fill,CNR,BUY,5000,152.5550,-4141,mode=cut
+292.911,265,fill,AC,BUY,5000,20.9350,-300,mode=cut
+292.913,265,place,RY,BUY,700,107.2500,3414,agg
+292.962,265,place,RY,BUY,100,107.2500,3414,agg
+293.004,265,place,RY,BUY,4200,107.2500,3414,agg
+293.226,265,fill,RY,BUY,5000,107.1750,8414,mode=dir
+293.575,265,place,CNR,BUY,4141,152.6300,-4141,agg
+293.575,265,place,AC,BUY,300,20.9800,-300,agg
+294.198,266,fill,CNR,BUY,4141,152.5750,0,mode=cut
+294.200,266,fill,AC,BUY,300,20.9350,0,mode=cut
+295.865,268,place,RY,BUY,5000,107.4200,8414,agg
+296.065,268,fill,RY,BUY,5000,107.3200,13414,mode=dir
+296.877,269,place,RY,BUY,3673,107.4600,13414,agg
+296.992,269,fill,RY,BUY,3673,107.3750,17087,mode=dir
+298.689,270,place,RY,BUY,1327,107.5600,17087,agg
+299.098,270,fill,RY,BUY,1327,107.4900,18414,mode=dir
+299.553,271,place,RY,BUY,1019,107.6300,18414,agg
+299.696,272,place,RY,BUY,308,107.6200,18414,agg
+299.996,272,fill,RY,BUY,1327,107.5350,19741,mode=dir
+301.425,273,place,RY,BUY,1019,107.7100,19741,agg
+301.629,273,fill,RY,BUY,1019,107.6200,20760,mode=dir
+302.435,274,place,RY,BUY,308,107.7300,20760,agg
+302.659,275,fill,RY,BUY,308,107.6550,21068,mode=dir
+304.274,276,dir_enter,CNR,LONG,815,152.7050,0,SLOW trend t=4.1 net=+22t over 21 case ticks
+304.276,276,place,CNR,BUY,815,152.7500,0,agg
+304.389,276,place,RY,BUY,711,107.9100,21068,agg
+304.826,276,fill,CNR,BUY,815,152.7050,815,mode=dir
+304.895,276,fill,RY,BUY,711,107.7850,21779,mode=dir
+307.053,279,place,RY,BUY,308,108.0000,21779,agg
+307.265,279,fill,RY,BUY,308,107.9100,22087,mode=dir
+310.144,282,regime,CNR,,,,,"TREND -> mixed (er=1.00, net +5t over 7s)"
+312.237,284,regime,CNR,,,,,"mixed -> TREND (er=1.00, net +8t over 7s)"
+313.088,285,place,CNR,SELL,815,152.7500,815,agg
+313.088,285,place,RY,SELL,5000,108.1500,22087,agg
+313.432,285,fill,CNR,SELL,815,152.7850,0,mode=cut
+313.435,285,fill,RY,SELL,5000,108.1950,17087,mode=cut
+314.132,286,place,RY,SELL,5000,108.2000,17087,agg
+314.370,286,fill,RY,SELL,5000,108.2350,12087,mode=cut
+315.258,287,place,RY,SELL,5000,108.2000,12087,agg
+315.679,287,fill,RY,SELL,5000,108.2450,7087,mode=cut
+316.379,288,place,RY,SELL,5000,108.2400,7087,agg
+316.583,288,fill,RY,SELL,5000,108.2850,2087,mode=cut
+317.411,289,place,RY,SELL,2087,108.3100,2087,agg
+317.589,289,fill,RY,SELL,2087,108.3450,0,mode=cut
+325.073,297,regime,RY,,,,,"TREND -> chop (er=0.23, net +4t over 7s)"
+326.199,298,regime,RY,,,,,"chop -> mixed (er=0.33, net -3t over 7s)"
+536.988,299,end,,,,,,"pnl 135623.94 pos {'CNR': 0, 'RY': 0, 'AC': 0}"

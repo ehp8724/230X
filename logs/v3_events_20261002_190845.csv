@@ -1,0 +1,331 @@
+t,case_tick,event,ticker,side,qty,price,pos,note
+31.476,0,breaker,,,,,,"pnl -79,572 peak 79,572"
+37.622,6,regime,RY,,,,,"chop -> mixed (er=0.28, net +18t over 7s)"
+38.706,7,regime,AC,,,,,"mixed -> chop (er=0.00, net +0t over 7s)"
+39.211,7,regime,AC,,,,,"chop -> mixed (er=0.40, net +2t over 7s)"
+39.714,8,place,CNR,SELL,300,158.8200,0,quote
+39.714,8,place,RY,BUY,500,101.1200,0,quote
+39.714,8,place,AC,BUY,700,26.0100,0,quote
+39.714,8,place,AC,SELL,700,26.0200,0,quote
+40.172,9,regime,RY,,,,,"mixed -> TREND (er=0.47, net +31t over 7s)"
+40.173,9,place,AC,BUY,1200,26.0200,0,quote
+40.173,9,place,AC,SELL,1200,26.0400,0,quote
+40.173,9,place,CNR,SELL,300,158.8100,0,quote
+40.173,9,place,RY,BUY,700,101.1900,0,quote
+41.162,9,fill,RY,BUY,500,101.2150,500,mode=mm
+41.164,10,place,AC,BUY,1200,26.0300,0,quote
+41.164,10,place,AC,SELL,1200,26.0500,0,quote
+41.164,10,place,RY,BUY,600,101.1000,500,quote
+41.164,10,place,RY,SELL,700,101.2000,500,quote
+41.421,10,fill,RY,BUY,700,101.1550,1200,mode=mm
+41.421,10,fill,AC,SELL,1200,26.0400,-1200,mode=mm
+41.423,10,place,RY,SELL,800,101.1400,1200,quote
+41.423,10,place,AC,BUY,400,26.0500,-1200,quote
+41.423,10,place,AC,SELL,200,26.1000,-1200,quote
+41.458,10,place,RY,BUY,500,101.1100,1200,quote
+41.941,10,fill,RY,SELL,1500,101.1400,-300,mode=mm
+41.942,10,fill,AC,SELL,1200,26.0650,-2400,mode=mm
+41.945,10,place,AC,BUY,700,26.0600,-2400,quote
+41.945,10,place,AC,SELL,200,26.1400,-2400,quote
+41.945,10,place,RY,SELL,300,101.1500,-300,quote
+41.945,10,place,RY,BUY,1500,98.1100,-300,ladder
+41.945,10,place,RY,SELL,1500,104.1800,-300,ladder
+41.945,10,place,RY,BUY,1500,93.0500,-300,ladder
+41.945,10,place,RY,SELL,1500,109.2300,-300,ladder
+41.945,10,place,RY,BUY,2000,85.9700,-300,ladder
+41.945,10,place,RY,SELL,2000,116.3100,-300,ladder
+42.180,10,fill,RY,BUY,1100,101.1350,800,mode=mm
+42.183,10,fill,AC,SELL,200,26.0850,-2600,mode=mm
+42.183,11,stop,AC,BUY,2600,26.2000,-2600,loss=5.4t stop=5.0t trend_against=False
+42.189,11,place,AC,BUY,2600,26.2000,-2600,agg
+42.189,11,place,RY,BUY,200,101.0900,800,quote
+42.478,11,fill,CNR,SELL,300,158.7950,-300,mode=mm
+42.478,11,fill,AC,SELL,200,26.1250,-2800,mode=mm
+42.480,11,regime,RY,,,,,"TREND -> mixed (er=0.31, net +23t over 7s)"
+42.480,11,regime,AC,,,,,"mixed -> TREND (er=1.00, net +17t over 7s)"
+42.481,11,place,AC,BUY,200,26.2200,-2800,agg
+42.481,11,place,RY,BUY,400,101.0100,800,quote
+42.481,11,place,RY,SELL,600,101.0800,800,quote
+42.481,11,place,CNR,BUY,300,158.7800,-300,quote
+42.481,11,place,CNR,SELL,300,158.8300,-300,quote
+43.381,11,fill,RY,BUY,200,101.0550,1000,mode=mm
+43.381,11,fill,AC,BUY,2600,26.1450,-200,mode=mm
+43.382,12,regime,CNR,,,,,"TREND -> mixed (er=0.43, net -3t over 7s)"
+43.382,12,regime,RY,,,,,"mixed -> chop (er=0.00, net +0t over 7s)"
+43.387,12,place,CNR,BUY,300,158.8000,-300,quote
+43.387,12,place,RY,BUY,500,101.0000,1000,quote
+43.387,12,place,RY,SELL,800,101.0600,1000,quote
+43.468,12,fill,RY,BUY,400,101.0350,1400,mode=mm
+43.469,12,place,RY,SELL,1400,101.0200,1400,quote
+43.469,12,place,CNR,SELL,500,158.8500,-300,quote
+43.963,12,fill,CNR,SELL,300,158.8200,-600,mode=mm
+43.963,12,fill,RY,BUY,500,101.0000,1900,mode=mm
+43.964,12,regime,CNR,,,,,"mixed -> chop (er=0.20, net -2t over 7s)"
+43.965,12,stop,AC,BUY,200,26.4000,-200,loss=18.8t stop=6.7t trend_against=True
+43.967,12,place,AC,BUY,200,26.4000,-200,agg
+43.967,12,place,CNR,BUY,800,158.8200,-600,quote
+43.967,12,place,CNR,SELL,600,158.8300,-600,quote
+43.967,12,place,RY,BUY,300,100.9600,1900,quote
+43.967,12,place,RY,SELL,900,100.9900,1900,quote
+44.592,12,fill,RY,SELL,2200,100.9850,-300,mode=mm
+44.846,13,regime,RY,,,,,"chop -> mixed (er=0.27, net -12t over 7s)"
+44.846,13,dir_enter,AC,LONG,12712,26.3350,-200,gap=18.0t thr=12.0t er=1.00 vol=2.1
+44.848,13,place,AC,BUY,200,26.4000,-200,agg
+44.848,13,place,RY,BUY,700,101.0700,-300,quote
+44.848,13,place,RY,SELL,600,101.1400,-300,quote
+45.433,13,fill,CNR,SELL,600,158.8250,-1200,mode=mm
+45.433,13,fill,RY,SELL,900,101.0950,-1200,mode=mm
+45.433,13,fill,AC,BUY,400,26.3350,200,mode=dir
+45.440,14,place,AC,BUY,4800,26.4200,200,agg
+45.440,14,place,RY,BUY,500,101.1000,-1200,quote
+45.440,14,place,RY,SELL,300,101.2100,-1200,quote
+46.045,14,fill,RY,BUY,100,101.1750,-1100,mode=mm
+46.045,15,regime,CNR,,,,,"chop -> mixed (er=0.64, net +3t over 7s)"
+46.045,15,place,AC,BUY,200,26.4200,200,agg
+46.045,15,place,CNR,BUY,1400,158.8400,-1200,quote
+46.045,15,place,CNR,SELL,800,158.8600,-1200,quote
+46.045,15,place,RY,BUY,500,101.1600,-1100,quote
+47.050,15,fill,CNR,SELL,105,158.8400,-1305,mode=mm
+47.050,15,fill,RY,SELL,300,101.2300,-1400,mode=mm
+47.050,15,fill,AC,BUY,5000,26.3600,5200,mode=dir
+47.068,15,regime,RY,,,,,"mixed -> chop (er=0.21, net +12t over 7s)"
+47.070,15,place,AC,BUY,1600,26.4100,5200,agg
+47.070,15,place,CNR,BUY,1400,158.8600,-1305,quote
+47.070,15,place,CNR,SELL,100,158.8800,-1305,quote
+47.070,15,place,RY,BUY,800,101.3300,-1400,quote
+48.271,15,fill,CNR,SELL,695,158.8650,-2000,mode=mm
+48.271,17,regime,CNR,,,,,"mixed -> TREND (er=1.00, net +17t over 7s)"
+48.271,17,regime,RY,,,,,"chop -> TREND (er=0.48, net +29t over 7s)"
+48.286,17,stop,CNR,BUY,2000,159.0600,-2000,loss=13.1t stop=5.9t trend_against=False
+48.286,17,stop,RY,BUY,1400,101.5300,-1400,loss=27.0t stop=19.8t trend_against=False
+48.288,17,place,CNR,BUY,2000,159.0600,-2000,agg
+48.288,17,place,RY,BUY,1400,101.5300,-1400,agg
+48.288,17,place,AC,BUY,1500,26.4000,5200,agg
+48.594,17,fill,CNR,SELL,100,158.9700,-2100,mode=mm
+48.594,17,fill,AC,BUY,1600,26.3500,6800,mode=dir
+48.596,17,place,CNR,BUY,100,159.0800,-2100,agg
+49.122,17,fill,CNR,BUY,2000,158.9850,-100,mode=mm
+49.123,17,fill,RY,BUY,1400,101.4450,0,mode=mm
+49.128,17,fill,AC,BUY,1500,26.3450,8300,mode=dir
+49.398,18,place,AC,BUY,1000,26.3700,8300,agg
+49.398,18,place,RY,BUY,100,101.4700,0,quote
+49.398,18,place,RY,BUY,100,98.3200,0,ladder
+49.398,18,place,RY,SELL,1500,104.4000,0,ladder
+49.398,18,place,RY,SELL,900,109.4700,0,ladder
+49.616,18,fill,CNR,BUY,100,159.0050,0,mode=mm
+49.844,18,fill,AC,BUY,1000,26.2950,9300,mode=dir
+49.944,19,dir_exit,AC,,9300,26.1650,9300,fast trail 20>15t
+49.944,19,regime,AC,,,,,losing ride -17t -> entry bar x1.40
+49.945,19,place,AC,SELL,5000,25.9900,9300,agg
+50.395,19,place,CNR,BUY,300,159.0900,0,quote
+50.395,19,place,RY,BUY,300,101.5300,0,quote
+50.395,19,place,RY,BUY,1500,93.3100,0,ladder
+50.395,19,place,RY,BUY,2000,86.2100,0,ladder
+50.395,19,place,RY,SELL,2000,116.6400,0,ladder
+50.583,19,place,RY,BUY,300,101.5500,0,quote
+50.865,19,place,RY,BUY,300,101.5600,0,quote
+50.940,20,place,CNR,BUY,300,159.1000,0,quote
+50.940,20,place,RY,BUY,300,101.5800,0,quote
+51.222,20,dir_enter,CNR,LONG,7672,159.1400,0,gap=14.0t thr=12.0t er=1.00 vol=2.0
+51.223,20,place,CNR,BUY,5000,159.2100,0,agg
+51.223,20,place,AC,SELL,5000,25.7900,9300,agg
+51.223,20,place,RY,BUY,300,101.6000,0,quote
+51.533,20,place,RY,BUY,300,101.6100,0,quote
+52.945,20,fill,CNR,BUY,5000,159.1450,5000,mode=dir
+52.946,20,fill,AC,SELL,5000,25.8850,4300,mode=cut
+52.952,21,dir_enter,RY,LONG,7672,101.6450,0,gap=22.4t thr=19.5t er=1.00 vol=3.9
+52.954,21,place,CNR,BUY,2427,159.2600,5000,agg
+52.954,21,place,RY,BUY,1000,101.7000,0,agg
+52.954,21,place,AC,SELL,4300,25.8200,4300,agg
+54.252,23,regime,AC,,,,,"TREND -> chop (er=0.10, net -9t over 7s)"
+54.253,23,place,CNR,BUY,300,159.2800,5000,agg
+54.253,23,place,RY,BUY,200,101.6900,0,agg
+54.253,23,place,AC,SELL,4300,26.2200,4300,agg
+54.986,23,fill,CNR,BUY,2727,159.2100,7727,mode=dir
+54.989,23,fill,RY,BUY,1200,101.6450,1200,mode=dir
+54.990,23,fill,AC,SELL,4300,26.2650,0,mode=cut
+55.310,23,place,CNR,BUY,1100,159.3200,7727,agg
+55.310,23,place,RY,BUY,300,101.6600,1200,agg
+55.310,23,place,AC,BUY,600,26.1400,0,quote
+55.310,23,place,AC,BUY,1500,25.3500,0,ladder
+55.310,23,place,AC,BUY,1500,24.0500,0,ladder
+55.310,23,place,AC,BUY,2000,22.2200,0,ladder
+55.568,24,place,AC,BUY,300,26.1500,0,quote
+55.817,24,place,AC,BUY,600,26.1200,0,quote
+56.069,24,fill,CNR,BUY,1100,159.2450,8827,mode=dir
+56.071,24,fill,RY,BUY,300,101.6250,1500,mode=dir
+56.077,24,fill,AC,BUY,900,26.1450,900,mode=mm
+56.100,25,place,CNR,BUY,2661,159.2900,8827,agg
+56.100,25,place,RY,BUY,900,101.6600,1500,agg
+56.100,25,place,AC,SELL,600,26.1700,900,quote
+56.100,25,place,AC,SELL,1500,26.9300,900,ladder
+56.100,25,place,AC,SELL,1500,28.2300,900,ladder
+56.100,25,place,AC,SELL,400,30.0600,900,ladder
+56.486,25,fill,AC,BUY,600,26.1500,1500,mode=mm
+56.487,25,regime,AC,,,,,"chop -> mixed (er=0.38, net +21t over 7s)"
+56.938,25,fill,CNR,BUY,2661,159.2450,11488,mode=dir
+56.944,25,fill,RY,BUY,900,101.6100,2400,mode=dir
+57.264,25,regime,RY,,,,,"TREND -> mixed (er=0.45, net +6t over 7s)"
+57.558,26,regime,RY,,,,,"mixed -> chop (er=0.25, net +3t over 7s)"
+57.558,26,regime,AC,,,,,"mixed -> TREND (er=0.47, net +25t over 7s)"
+58.334,27,regime,AC,,,,,"TREND -> chop (er=0.17, net +12t over 7s)"
+58.609,27,dir_exit,RY,,2400,101.6250,2400,fast stalled 6s without new extreme
+58.609,27,regime,RY,,,,,losing ride -2t -> entry bar x1.40
+58.614,27,place,RY,SELL,2400,101.5900,2400,agg
+58.885,27,regime,RY,,,,,"chop -> mixed (er=0.43, net -3t over 7s)"
+58.886,27,place,CNR,BUY,2500,159.3200,11488,agg
+58.886,27,place,AC,BUY,300,25.9700,1500,quote
+58.886,27,place,AC,SELL,700,26.0400,1500,quote
+59.291,27,fill,RY,SELL,2400,101.6150,0,mode=cut
+59.293,28,place,RY,BUY,1200,101.6100,0,quote
+59.293,28,place,AC,SELL,700,26.0300,1500,quote
+59.293,28,place,RY,BUY,900,98.5600,0,ladder
+59.293,28,place,RY,BUY,300,93.4800,0,ladder
+60.037,28,fill,CNR,BUY,2500,159.2750,13988,mode=dir
+60.045,29,regime,CNR,,,,,"TREND -> mixed (er=0.44, net +4t over 7s)"
+60.045,29,regime,AC,,,,,"chop -> TREND (er=0.78, net -25t over 7s)"
+60.643,29,fill,RY,BUY,1200,101.6050,1200,mode=mm
+60.646,29,fill,AC,SELL,700,26.0150,800,mode=mm
+60.647,29,regime,CNR,,,,,"mixed -> chop (er=0.24, net +3t over 7s)"
+61.553,30,regime,AC,,,,,"TREND -> chop (er=0.17, net -5t over 7s)"
+61.556,30,place,RY,SELL,800,101.6100,1200,quote
+61.556,30,place,RY,SELL,300,104.6600,1200,ladder
+61.556,30,place,RY,SELL,100,109.7400,1200,ladder
+62.129,31,regime,CNR,,,,,"chop -> mixed (er=0.25, net -2t over 7s)"
+62.611,31,regime,AC,,,,,"chop -> mixed (er=0.29, net +14t over 7s)"
+62.611,31,dir_exit,CNR,,13988,159.2050,13988,"fast trend faded (gap=2.5t, t_slow=2.7)"
+62.611,31,regime,CNR,,,,,winning ride +6t -> entry bar x1.00
+62.626,31,place,CNR,SELL,5000,159.1300,13988,agg
+62.626,31,place,AC,BUY,400,26.2800,800,quote
+62.626,31,place,AC,SELL,600,26.4400,800,quote
+62.626,31,place,RY,BUY,500,101.6000,1200,quote
+62.626,31,place,RY,BUY,100,86.3700,1200,ladder
+62.626,31,place,RY,SELL,2000,116.8500,1200,ladder
+64.629,32,regime,RY,,,,,"mixed -> chop (er=0.20, net -1t over 7s)"
+64.630,32,place,CNR,SELL,5000,159.1700,13988,agg
+64.630,32,place,AC,SELL,600,26.4200,800,quote
+64.630,32,place,AC,SELL,1500,27.0600,800,ladder
+64.630,32,place,AC,SELL,900,28.3800,800,ladder
+67.997,32,fill,CNR,SELL,5000,159.2250,8988,mode=cut
+68.001,32,fill,RY,SELL,300,101.6050,900,mode=mm
+68.001,32,fill,AC,BUY,400,26.3700,1200,mode=mm
+68.001,36,place,CNR,SELL,5000,159.1900,8988,agg
+68.001,36,place,AC,BUY,400,26.1500,1200,quote
+68.001,36,place,AC,SELL,700,26.2300,1200,quote
+68.001,36,place,RY,BUY,900,101.5900,900,quote
+68.001,36,place,RY,SELL,1300,101.6000,900,quote
+68.001,36,place,AC,BUY,1500,25.4300,1200,ladder
+68.001,36,place,AC,BUY,1500,24.1200,1200,ladder
+68.001,36,place,AC,BUY,400,22.2900,1200,ladder
+68.001,36,place,AC,SELL,2000,30.1500,1200,ladder
+71.102,36,fill,CNR,SELL,5000,159.2300,3988,mode=cut
+71.104,39,place,CNR,SELL,3988,158.9800,3988,agg
+71.104,39,place,RY,BUY,900,101.5700,900,quote
+71.104,39,place,RY,SELL,1300,101.5800,900,quote
+71.104,39,place,AC,BUY,400,26.0300,1200,quote
+71.104,39,place,AC,SELL,700,26.1200,1200,quote
+71.104,39,place,AC,SELL,1500,26.9000,1200,ladder
+71.104,39,place,AC,SELL,1500,28.2100,1200,ladder
+71.104,39,place,AC,BUY,2000,22.2000,1200,ladder
+72.647,39,fill,RY,BUY,900,101.5750,1800,mode=mm
+72.647,39,fill,AC,SELL,300,26.0900,900,mode=mm
+72.650,41,place,AC,BUY,400,26.2500,900,quote
+72.650,41,place,AC,SELL,600,26.3400,900,quote
+73.396,41,fill,CNR,SELL,3988,159.0350,0,mode=cut
+73.398,41,fill,RY,BUY,900,101.5750,2700,mode=mm
+73.398,41,fill,AC,SELL,700,26.2700,200,mode=mm
+73.660,42,place,CNR,SELL,1200,159.0400,0,quote
+73.660,42,place,RY,BUY,500,101.5400,2700,quote
+73.660,42,place,RY,SELL,1600,101.5700,2700,quote
+73.660,42,place,AC,BUY,300,26.2700,200,quote
+73.660,42,place,AC,SELL,1500,27.0200,200,ladder
+74.638,43,fill,CNR,SELL,1200,159.0450,-1200,mode=mm
+74.645,43,place,CNR,BUY,800,159.0500,-1200,quote
+75.982,43,fill,RY,SELL,1600,101.5650,1100,mode=mm
+75.984,44,stop,CNR,BUY,1200,159.3600,-1200,loss=21.0t stop=11.1t trend_against=False
+75.989,44,place,CNR,BUY,1200,159.3600,-1200,agg
+75.989,44,place,RY,BUY,800,101.5600,1100,quote
+75.989,44,place,RY,SELL,1400,101.5700,1100,quote
+75.989,44,place,AC,BUY,500,26.3900,200,quote
+75.989,44,place,AC,SELL,200,26.4700,200,quote
+75.989,44,place,AC,BUY,1500,25.5400,200,ladder
+75.989,44,place,AC,BUY,1500,24.2200,200,ladder
+75.989,44,place,AC,SELL,1500,28.4300,200,ladder
+75.989,44,place,AC,BUY,2000,22.3800,200,ladder
+75.989,44,place,AC,SELL,2000,30.2800,200,ladder
+78.500,44,fill,CNR,BUY,1200,159.2200,0,mode=mm
+78.504,46,place,AC,BUY,500,26.4500,200,quote
+78.504,46,place,AC,SELL,600,26.5200,200,quote
+78.504,46,place,CNR,BUY,700,159.3400,0,quote
+78.504,46,place,AC,SELL,1500,27.2200,200,ladder
+81.723,46,fill,RY,BUY,800,101.5650,1900,mode=mm
+81.723,46,fill,AC,SELL,800,26.4750,-600,mode=mm
+81.724,49,place,CNR,BUY,700,159.3700,0,quote
+81.724,49,place,CNR,SELL,700,159.3900,0,quote
+81.724,49,place,RY,BUY,600,101.5400,1900,quote
+81.724,49,place,RY,SELL,1500,101.5500,1900,quote
+81.724,49,place,AC,BUY,400,26.5500,-600,quote
+81.724,49,place,AC,SELL,300,26.6100,-600,quote
+96.167,49,place,RY,BUY,600,101.5400,1900,quote REJECTED {'_error': 'no-response'}
+96.167,49,place,RY,SELL,1500,101.5500,1900,quote REJECTED {'_error': 'no-response'}
+96.167,49,place,AC,BUY,400,26.5500,-600,quote REJECTED {'_error': 'no-response'}
+96.167,49,place,AC,SELL,300,26.5800,-600,quote REJECTED {'_error': 'no-response'}
+115.838,49,place,RY,BUY,600,101.5400,1900,quote REJECTED {'_error': 'no-response'}
+115.838,49,place,RY,SELL,1500,101.5500,1900,quote REJECTED {'_error': 'no-response'}
+115.838,49,place,AC,BUY,400,26.5500,-600,quote REJECTED {'_error': 'no-response'}
+115.838,49,place,AC,SELL,300,26.5800,-600,quote REJECTED {'_error': 'no-response'}
+135.549,49,place,RY,BUY,600,101.5400,1900,quote REJECTED {'_error': 'no-response'}
+135.549,49,place,RY,SELL,1500,101.5500,1900,quote REJECTED {'_error': 'no-response'}
+135.549,49,place,AC,BUY,400,26.5500,-600,quote REJECTED {'_error': 'no-response'}
+135.549,49,place,AC,SELL,300,26.5800,-600,quote REJECTED {'_error': 'no-response'}
+155.288,49,place,RY,BUY,600,101.5400,1900,quote REJECTED {'_error': 'no-response'}
+155.288,49,place,RY,SELL,1500,101.5500,1900,quote REJECTED {'_error': 'no-response'}
+155.288,49,place,AC,BUY,400,26.5500,-600,quote REJECTED {'_error': 'no-response'}
+155.288,49,place,AC,SELL,300,26.5800,-600,quote REJECTED {'_error': 'no-response'}
+175.013,49,place,RY,BUY,600,101.5400,1900,quote REJECTED {'_error': 'no-response'}
+175.013,49,place,RY,SELL,1500,101.5500,1900,quote REJECTED {'_error': 'no-response'}
+175.013,49,place,AC,BUY,400,26.5500,-600,quote REJECTED {'_error': 'no-response'}
+175.013,49,place,AC,SELL,300,26.5800,-600,quote REJECTED {'_error': 'no-response'}
+194.784,49,place,RY,BUY,600,101.5400,1900,quote REJECTED {'_error': 'no-response'}
+194.784,49,place,RY,SELL,1500,101.5500,1900,quote REJECTED {'_error': 'no-response'}
+194.784,49,place,AC,BUY,400,26.5500,-600,quote REJECTED {'_error': 'no-response'}
+194.784,49,place,AC,SELL,300,26.5800,-600,quote REJECTED {'_error': 'no-response'}
+214.576,49,place,RY,BUY,600,101.5400,1900,quote REJECTED {'_error': 'no-response'}
+214.576,49,place,RY,SELL,1500,101.5500,1900,quote REJECTED {'_error': 'no-response'}
+214.576,49,place,AC,BUY,400,26.5500,-600,quote REJECTED {'_error': 'no-response'}
+214.576,49,place,AC,SELL,300,26.5800,-600,quote REJECTED {'_error': 'no-response'}
+239.124,49,place,RY,BUY,600,101.5400,1900,quote REJECTED {'_error': 'no-response'}
+239.124,49,place,RY,SELL,1500,101.5500,1900,quote REJECTED {'_error': 'no-response'}
+239.124,49,place,AC,BUY,400,26.5500,-600,quote REJECTED {'_error': 'no-response'}
+239.124,49,place,AC,SELL,300,26.5800,-600,quote REJECTED {'_error': 'no-response'}
+266.940,49,place,RY,BUY,600,101.5400,1900,quote REJECTED {'_error': 'no-response'}
+266.940,49,place,RY,SELL,1500,101.5500,1900,quote REJECTED {'_error': 'no-response'}
+266.940,49,place,AC,BUY,400,26.5500,-600,quote REJECTED {'_error': 'no-response'}
+266.940,49,place,AC,SELL,300,26.5800,-600,quote REJECTED {'_error': 'no-response'}
+294.589,49,place,RY,BUY,600,101.5400,1900,quote REJECTED {'_error': 'no-response'}
+294.589,49,place,RY,SELL,1500,101.5500,1900,quote REJECTED {'_error': 'no-response'}
+294.589,49,place,AC,BUY,400,26.5500,-600,quote REJECTED {'_error': 'no-response'}
+294.589,49,place,AC,SELL,300,26.5800,-600,quote REJECTED {'_error': 'no-response'}
+322.518,49,place,RY,BUY,600,101.5400,1900,quote REJECTED {'_error': 'no-response'}
+322.518,49,place,RY,SELL,1500,101.5500,1900,quote REJECTED {'_error': 'no-response'}
+322.518,49,place,AC,BUY,400,26.5500,-600,quote REJECTED {'_error': 'no-response'}
+322.518,49,place,AC,SELL,300,26.5800,-600,quote REJECTED {'_error': 'no-response'}
+349.385,49,place,RY,BUY,600,101.5400,1900,quote REJECTED {'_error': 'no-response'}
+349.385,49,place,RY,SELL,1500,101.5500,1900,quote REJECTED {'_error': 'no-response'}
+349.385,49,place,AC,BUY,400,26.5500,-600,quote REJECTED {'_error': 'no-response'}
+349.385,49,place,AC,SELL,300,26.5800,-600,quote REJECTED {'_error': 'no-response'}
+375.156,49,place,RY,BUY,600,101.5400,1900,quote REJECTED {'_error': 'no-response'}
+375.156,49,place,RY,SELL,1500,101.5500,1900,quote REJECTED {'_error': 'no-response'}
+375.156,49,place,AC,BUY,400,26.5500,-600,quote REJECTED {'_error': 'no-response'}
+375.156,49,place,AC,SELL,300,26.5800,-600,quote REJECTED {'_error': 'no-response'}
+400.937,49,place,RY,BUY,600,101.5400,1900,quote REJECTED {'_error': 'no-response'}
+400.937,49,place,RY,SELL,1500,101.5500,1900,quote REJECTED {'_error': 'no-response'}
+400.937,49,place,AC,BUY,400,26.5500,-600,quote REJECTED {'_error': 'no-response'}
+400.937,49,place,AC,SELL,300,26.5800,-600,quote REJECTED {'_error': 'no-response'}
+427.263,49,place,RY,BUY,600,101.5400,1900,quote REJECTED {'_error': 'no-response'}
+427.263,49,place,RY,SELL,1500,101.5500,1900,quote REJECTED {'_error': 'no-response'}
+427.263,49,place,AC,BUY,400,26.5500,-600,quote REJECTED {'_error': 'no-response'}
+427.263,49,place,AC,SELL,300,26.5800,-600,quote REJECTED {'_error': 'no-response'}
+461.703,49,place,RY,SELL,1900,101.5000,1900,agg REJECTED {'_error': 'no-response'}
+461.703,49,place,AC,BUY,600,26.6100,-600,agg REJECTED {'_error': 'no-response'}
+496.162,49,end,,,,,,"pnl -85122.71 pos {'CNR': 0, 'RY': 1900, 'AC': -600}"
