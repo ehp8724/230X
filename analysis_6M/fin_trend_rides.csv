@@ -1,0 +1,6 @@
+run,ticker,side,enter_case_tick,exit_case_tick,enter_t,exit_signal_t,flat_t,hold_sec,entry_mid,max_abs_pos,pnl_actual,exit_reason,entry_note,pnl_ex_spike
+fin,CNR,SHORT,3,7,147.8,159.3,163.7,15.9,159.73,20149,-9499.0,fast trail 20>15t,gap=-14.9t thr=12.0t er=1.00 vol=1.0,-9499.0
+fin,CNR,LONG,7,11,164.2,174.9,179.4,15.2,160.225,19000,-15085.0,fast trail 16>15t,gap=34.2t thr=18.3t er=0.83 vol=2.6,-15085.0
+fin,CNR,SHORT,11,13,179.8,183.5,185.8,6.0,159.265,11400,-12113.0,fast trail 60>23t,gap=-58.2t thr=45.0t er=0.87 vol=4.6,-12113.0
+fin,RY,LONG,201,218,939.5,1004.2,1008.5,69.0,100.235,22062,6222108.0,fast trail 17790>89t,gap=14.0t thr=12.0t er=1.00 vol=0.7,450870.0
+fin,RY,LONG,261,262,1177.7,1181.5,1182.8,5.1,429.555,1500,6406.0,fast trail 21219>110t,gap=16483.8t thr=82.6t er=1.00 vol=16.5,0.0

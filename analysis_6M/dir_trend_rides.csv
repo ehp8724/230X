@@ -1,0 +1,12 @@
+run,ticker,side,enter_case_tick,exit_case_tick,enter_t,exit_signal_t,flat_t,hold_sec,entry_mid,max_abs_pos,pnl_actual,exit_reason,entry_note,pnl_ex_spike
+dir,CNR,LONG,7,13,156.8,170.1,181.0,24.1,160.11,22087,-31421.0,fast trail 16>15t,gap=79.3t thr=13.6t er=0.47 vol=3.4,-31421.0
+dir,CNR,SHORT,11,13,172.8,178.7,181.0,8.1,159.375,16813,-12339.0,fast trail 60>24t,gap=-33.3t thr=21.8t er=0.71 vol=5.5,-12339.0
+dir,CNR,LONG,21,26,213.7,228.0,232.2,18.6,160.39,22087,120.0,fast stalled 11s without new extreme,gap=44.6t thr=34.4t er=0.97 vol=6.1,120.0
+dir,CNR,SHORT,38,41,281.5,290.6,295.0,13.6,159.635,22087,-19231.0,fast trail 43>41t,gap=-45.7t thr=27.8t er=1.00 vol=6.2,-19231.0
+dir,CNR,LONG,61,65,373.3,386.4,390.8,17.5,160.18,22087,-5735.0,fast trail 19>17t,gap=29.8t thr=19.5t er=0.70 vol=3.1,-5735.0
+dir,CNR,LONG,100,108,528.0,556.9,560.1,32.1,160.455,17669,1529.0,"fast trend faded (gap=4.4t, t_slow=1.5)",gap=24.4t thr=17.6t er=1.00 vol=1.5,1529.0
+dir,CNR,SHORT,110,112,570.6,576.1,579.5,8.8,160.09,15338,-8855.0,fast trail 21>15t,gap=-27.8t thr=27.0t er=0.42 vol=3.8,-8855.0
+dir,CNR,LONG,137,142,679.1,691.9,696.3,17.2,160.355,17669,-6837.0,fast trail 32>27t,gap=21.0t thr=19.7t er=0.91 vol=1.7,-6837.0
+dir,CNR,SHORT,143,144,700.4,702.2,705.5,5.0,159.93,10000,-7466.0,fast trail 17>15t,gap=-21.7t thr=20.1t er=0.83 vol=2.6,-7466.0
+dir,RY,LONG,201,218,932.9,999.3,1003.6,70.8,100.165,22087,6238173.0,fast trail 17781>89t,gap=9.5t thr=8.0t er=1.00 vol=0.7,459740.0
+dir,RY,LONG,261,262,1172.6,1176.7,1176.7,4.1,429.555,0,0.0,fast trail 21532>110t,gap=12524.0t thr=66.1t er=1.00 vol=16.5,0.0

@@ -1,0 +1,10 @@
+run,ticker,mode,pnl_actual,pnl_ex_spike,seconds_in_mode
+dir,CNR,cut,-70347,-70347,29
+dir,CNR,dir,-6581,-6581,105
+dir,CNR,mm,-967,-967,1940
+dir,RY,cut,5851497,0,4
+dir,RY,dir,386673,459740,71
+dir,RY,mm,3,0,1998
+dir,AC,cut,4167,4167,4
+dir,AC,dir,113903,113903,124
+dir,AC,mm,59,59,1945

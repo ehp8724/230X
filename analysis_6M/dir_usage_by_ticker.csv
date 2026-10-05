@@ -1,0 +1,4 @@
+run,ticker,fills,shares_traded,fills_in_mm,fills_in_dir_or_cut,mm_stopouts,trend_rides,max_abs_pos,pnl_actual,pnl_ex_spike
+dir,CNR,99,318596,4,95,0,9,22087,-77895,-77895
+dir,RY,12,44174,0,12,0,2,22087,6238173,459740
+dir,AC,12,44174,0,12,0,1,22087,118130,118130

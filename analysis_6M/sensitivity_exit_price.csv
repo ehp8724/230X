@@ -1,0 +1,11 @@
+run,scenario,ry_exit_price,ry_pnl_ex_spike,total_pnl_ex_spike,spike_contribution
+fin,ref (last tight-book bid),121.08,447172,511116,5777656
+fin,last row before spike,123.25,495046,558990,5729781
+fin,-5% haircut on ref,115.03,313608,377552,5911219
+fin,-10% haircut on ref,108.97,180045,243989,6044782
+fin,exit at $110,110.0,202725,266669,6022103
+dir,ref (last tight-book bid),121.08,459740,499975,5778434
+dir,last row before spike,123.25,507669,547903,5730505
+dir,-5% haircut on ref,115.03,326025,366260,5912148
+dir,-10% haircut on ref,108.97,192310,232545,6045863
+dir,exit at $110,110.0,215016,255251,6023158

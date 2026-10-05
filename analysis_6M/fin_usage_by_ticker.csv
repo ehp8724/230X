@@ -1,0 +1,4 @@
+run,ticker,fills,shares_traded,fills_in_mm,fills_in_dir_or_cut,mm_stopouts,trend_rides,max_abs_pos,pnl_actual,pnl_ex_spike
+fin,CNR,682,727682,636,46,86,3,20149,-52646,-52646
+fin,RY,676,783178,658,18,70,2,22062,6224827,447172
+fin,AC,748,957206,726,22,7,1,21888,116590,116590
