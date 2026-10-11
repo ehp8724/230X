@@ -32,7 +32,7 @@
 \noindent We traded the ALGO2e case with one algorithm, \code{algo2e\_fin.py}, which combines a market maker, a
 trend-following engine and a risk layer. We also ran two variants of the same code on separate
 accounts to isolate where performance came from: \code{dir.py} (trend engine only) and a pure market-making build
-(trend engine switched off). We also report the following round, in which we entered late. This report answers the four questions in turn. All numbers come from the logs our bot wrote
+(trend engine switched off). This report answers the four questions in turn. All numbers come from the logs our bot wrote
 during the run; the section on our Python script explains the logging.
 
 %==========================================================================================
@@ -207,13 +207,10 @@ In the RY panel the dashed line is the P\&L without the tick-217 spike.}
 \label{fig:regime}
 \end{figure}
 
-\paragraph{The following round: an operational failure, not a strategy failure.}
-In the simulation round after this one we did not get our strategy into the market properly. We did not know exactly when that round would start, and our sessions crashed,
-so the bot connected late: its first session started at case tick 49, when about a sixth of the case had already passed, and stopped at tick 147. We restarted it at tick 155 and it
-traded to the end. In total it missed about 55 of the 300 ticks, including the opening, and each restart began from a flat book with all its signals warming up again. That round's market
-was quiet and range-bound (CNR \$153.35--155.49, RY \$99.65--100.10, AC \$24.82--25.72), the regime in which our market maker is roughly break-even, as the offline ``chop'' test also shows.
-Limits were respected throughout (peak gross position 21{,}317). The lesson is operational rather than strategic: the script already waits by itself until the case status is \code{ACTIVE},
-so it should be launched well before the round starts, and it needs a watchdog that restarts it automatically after a crash.
+\paragraph{A note on the following round.}
+In the round after this one our RIT client crashed, so we had cancelled the script and only started it once the round was already under way. The bot first
+joined at case tick 49 of 300 and so missed the opening, and it could not run the strategy as designed for that round. That round's market was quiet and range-bound,
+and the late, interrupted session ended with a small loss of \$3{,}427. We mention it for completeness; it does not change the result reported in Section~(d).
 
 \paragraph{Why market making did not pay in a mean-reverting market.}
 This is the most instructive result of the run. Mean reversion in the price is not the same thing as profitable market making. The spread was one tick on all three stocks,
@@ -381,10 +378,6 @@ the book broke (\$121.08), keeping everything else unchanged. The main strategy 
 $+\$37$k at 8{,}000 shares and $+\$56$k at 12{,}000 shares before costs, and roughly $+\$5$k to $+\$20$k at 8{,}000 shares after half to one tick of cost on about three million shares traded.
 Almost all of it falls in ticks 0--199, because the tilt switches itself off when a stock is in TREND, so it would not have held a short into the RY move. It is an upper bound (it assumes the
 target position is reached instantly) and below 1\% of the total, which is consistent with our decision to leave it off.
-
-\paragraph{The following round.} In the next round the account finished at \textbf{$-\$3{,}427$}: $-\$5{,}944$ in the first, late session (ticks 49--147) and $+\$2{,}623$ after the restart
-(ticks 155--300). As described in Section~(c), this reflects a late start and crashed sessions rather than the strategy: the bot was absent for the opening and for part of the middle of the case,
-and the market it did trade was the quiet, range-bound kind in which we expected the market maker to roughly break even.
 
 \paragraph{How we read the result.} The P\&L is dominated by one event, and we do not claim we predicted it. What the design did was put the right position on by rule before the event:
 regime detection moved RY into trend mode within about one case tick of the drift starting, the trend engine sized up quickly to 88\% of the limit, and the wide, volatility-scaled trailing stop
