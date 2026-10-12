@@ -32,7 +32,7 @@
 
 \begin{center}
 {\Large\bfseries RIT ALGO2e: Strategy Report}\\[2pt]
-Main strategy: \code{algo2e\_fin.py}
+Main strategy: \code{algo2e\_fin.py} (trading code in Appendix~\ref{app:code})
 \end{center}
 
 %==========================================================================================
@@ -91,7 +91,7 @@ stops, loss pauses and a learned entry threshold that rises after losing trend t
         other books were almost flat, so RY could take about 22{,}000 shares; had AC been trending at the same time, RY would have received only what was left.
   \item \textbf{Per-stock inventory caps.} Market-making inventory is limited to 9{,}000 shares per stock, so one stock cannot absorb the whole budget through passive fills.
   \item \textbf{Priority when room is tight.} Aggressive orders (stops, trend trades, unwind) are processed first, then the quotes of the stock with the healthiest wide spread,
-        which is the most profitable to quote, then the remaining quotes, and finally the far-from-fair ``sweep catcher'' orders.
+        which is the most profitable to quote, then the remaining quotes.
 \end{itemize}
 Order books for all stocks are fetched in parallel so that adding a stock does not slow the loop. Because RIT confirms orders and updates positions with a delay, the bot keeps its own
 registry of orders: a just-sent order counts as live before RIT lists it, and an order that has disappeared still counts toward exposure for a second, until the position catches up.
@@ -170,20 +170,18 @@ market making; the spread has to be wide relative to the size of the jumps.
         an ``exit'' mode with capped limit orders. Over the whole run the peak gross position was 23{,}088 and the peak net position 22{,}837, against a limit of 25{,}000.
 \end{itemize}
 
-\textbf{Our Python script and how to use it.} \code{algo2e\_fin.py} (submitted with this report) needs Python 3 and the \code{requests} package. Start the RIT client with the API enabled, note the
-API key and port, and run:
+\textbf{Our Python script and how to use it.} The trading code is listed in the Appendix (\code{algo2e\_strategy.py}). It needs Python 3 and the \code{requests} package. Start the RIT
+client with the API enabled, note the API key and port, and run:
 \begin{lstlisting}
-python algo2e_fin.py <API_KEY> <PORT> [CASE_MINUTES]     # e.g. python algo2e_fin.py abcde 15000 20
-python algo2e_fin.py --mock whipsaw --seconds 90           # offline test against the built-in fake exchange
+python algo2e_strategy.py <API_KEY> <PORT> [CASE_MINUTES]     # e.g. python algo2e_strategy.py abcde 15000 20
 \end{lstlisting}
 If started before the case begins, it waits until the case status is \code{ACTIVE}; without \code{CASE\_MINUTES} it learns the length of a tick from the case clock and scales its time windows
-accordingly. Options include \code{--no-dir} (market making only), \code{--size N} (quote size) and \code{--no-flatten-on-exit}; every constant sits in one configuration block and can be overridden
-from the environment as \code{CFG\_<NAME>}, which is how we tested alternatives such as the mean-reversion tilt. Ctrl-C cancels all orders and flattens the book. While running it prints every fill,
-mode change and stop, and once a second a status line per stock with its position, quotes, regime and signals. It writes two logs: \code{logs/v3\_ticks\_*.csv}, one row per loop with prices,
-signals, positions, modes and P\&L for every stock, and \code{logs/v3\_events\_*.csv}, every order, cancel, fill and decision with its reason. All numbers in this report come from these logs.
+accordingly. Every parameter sits in one configuration block at the top of the file. Ctrl-C cancels all orders and flattens the book. While running it prints every fill, mode change and stop,
+and once a second a status line per stock with its position, quotes and regime. It writes two logs: \code{logs/v3\_ticks\_*.csv}, one row per loop with prices, signals, positions, modes and P\&L
+for every stock, and \code{logs/v3\_events\_*.csv}, every order, cancel, fill and decision with its reason. All numbers in this report come from these logs.
 \code{dir.py} (trend engine only) and \code{mm.py} (market making only) are the same code with one engine disabled.
 
-\textbf{Testing before the case.} The script includes a fake exchange that reproduces RIT's order latency, position-reporting lag, rebates and fees, with eleven market scenarios. Re-running the final
+\textbf{Testing before the case.} During development we tested the bot against a fake exchange that reproduces RIT's order latency, position-reporting lag, rebates and fees, with eleven market scenarios. Re-running our development
 script through all of them (90\,s each) gave: calm, mean-reverting and slow-grind markets between $-\$932$ and $+\$440$; trending, reversing and crashing markets $+\$41$k to $+\$124$k; spikes, sweeps
 and one-sided order flow $+\$12$k to $+\$49$k; and a whipsaw market (short trends that reverse) $-\$44$k. Every run ended flat with peak gross at most 23{,}200 shares. The live result has the same
 shape: break-even in calm markets, profits in trends, and the whipsaw case is the same failure mode as CNR's opening.
@@ -238,4 +236,7 @@ into trend mode within about one case tick of the drift starting, the trend engi
 The position stayed within limits for the whole case and no fines were charged. The run also showed the two changes we would make first: a warm-up period before the trend engine is allowed to trade,
 and fee-aware quoting restricted to stocks where resting orders earn a rebate.
 
+\clearpage
+\appendix
+\input{appendix_code}
 \end{document}
